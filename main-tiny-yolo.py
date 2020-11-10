@@ -6,15 +6,9 @@ import time
 
 
 # Load YOLO
-#net = cv2.dnn.readNet("yolov3.weights", "yolov3.cfg")  # Original yolov3
-net = cv2.dnn.readNet("yolov2-tiny.weights","yolov2-tiny.cfg") #Tiny Yolo
-#classes = []
-#with open("coco.names", "r") as f:
-#    classes = [line.strip() for line in f.readlines()]
-
-
-#print(classes)
-
+#net = cv2.dnn.readNet("yolov3.weights", "yolov3.cfg")  # for Original yolov3
+net = cv2.dnn.readNet("yolov2-tiny.weights","yolov2-tiny.cfg") #Tiny Yolo , download weights 
+#presently recognisable objects
 classes=['person', 'bicycle', 'car', 'motorbike', 'aeroplane', 'bus', 'train', 'truck', 'boat', 'traffic light', 'fire hydrant',
  'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow', 'elephant', 'bear', 'zebra',
  'giraffe', 'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee', 'skis', 'snowboard', 'sports ball', 'kite',
@@ -32,7 +26,7 @@ outputlayers = [layer_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
 colors = np.random.uniform(0, 255, size=(len(classes), 3))
 
 # loading image
-cap = cv2.VideoCapture(2)  # 0 for 1st webcam
+cap = cv2.VideoCapture(2)  # 0 for 1st webcam , 1 for 2nd webcam and so on . input filename as a string 'test.mp4' etc for video
 font = cv2.FONT_HERSHEY_PLAIN
 starting_time = time.time()
 frame_id = 0
